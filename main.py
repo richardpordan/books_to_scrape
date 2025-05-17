@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from src import utils
 
 
-logger = utils.create_logger()
+logger = utils.create_logger("outputs")
 
 
 class BooksScraper:
