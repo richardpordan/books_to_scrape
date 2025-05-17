@@ -28,9 +28,9 @@ jobs:
       - name: Run scrape
         run: |
           if [ ${{ github.event.inputs.n_books }} == 'all' ]; then
-            echo "Will scrape all"
+            uv run main.py
           else
-            echo "Will scrape ${{ github.event.inputs.n_books }}"
+            uv run main.py ${{ github.event.inputs.n_books }}
           fi
 
       - name: Upload distributions
