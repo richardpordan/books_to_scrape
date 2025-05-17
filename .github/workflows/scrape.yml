@@ -12,7 +12,7 @@ permissions:
 
 jobs:
 
-  build:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
