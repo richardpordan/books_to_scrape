@@ -107,8 +107,7 @@ class BooksScraper:
             columns = ["title", "price", "description"]
         )
         df["href"] = self.book_links[0:books_to]
-        timestamp = str(datetime.datetime.now().isoformat())
-        df.to_csv(f"outputs/scrape_{timestamp}.csv")
+        df.to_csv(f"outputs/scrape_{utils.get_timestamp()}.csv")
 
 
 if __name__ == "__main__":

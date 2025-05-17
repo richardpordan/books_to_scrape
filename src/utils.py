@@ -1,7 +1,15 @@
 """Misc utils"""
 
+import re
 import datetime
 import logging
+
+
+def get_timestamp():
+    timestamp = str(datetime.datetime.now().isoformat())
+    timestamp = re.sub(r"[^a-zA-Z0-9]", "", timestamp)
+
+    return timestamp
 
 
 def create_logger(logs_folder_path = None):
@@ -9,7 +17,7 @@ def create_logger(logs_folder_path = None):
     lvl = logging.INFO
     fmt = "%(asctime)s %(levelname)s %(module)s - %(funcName)s: %(message)s"
 
-    timestamp = str(datetime.datetime.now().isoformat())
+    timestamp = get_timestamp()
 
     if not logs_folder_path:
         logging.basicConfig(
