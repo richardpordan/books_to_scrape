@@ -68,7 +68,11 @@ class BooksScraper:
         title = doc.select_one('div.product_main h1').text.strip()
         price = doc.select_one('div.product_main p.price_color').text.strip()
         desc_title = doc.select_one("div#product_description")
-        descn = desc_title.find_all_next("p")[0].text.strip()
+        descn = ""
+        if desc_title:
+            descn_el = desc_title.find_all_next("p")
+            if descn_el:
+                descn = descn_el[0].text.strip()
 
         self.data.append((title, price, descn))
 
