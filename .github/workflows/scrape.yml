@@ -5,7 +5,7 @@ on:
     inputs:
       n_books:
         description: Number of books to scrape
-        required: false
+        required: true
 
 permissions:
   contents: read
@@ -27,12 +27,11 @@ jobs:
 
       - name: Run scrape
         run: |
-          run: |
-            if [ ${{ github.event.inputs.n_books }} == 'all' ]; then
-              echo "Will scrape all"
-            else
-              echo "Will scrape ${{ github.event.inputs.n_books }}"
-            fi
+          if [ ${{ github.event.inputs.n_books }} == 'all' ]; then
+            echo "Will scrape all"
+          else
+            echo "Will scrape ${{ github.event.inputs.n_books }}"
+          fi
 
       - name: Upload distributions
         uses: actions/upload-artifact@v4
